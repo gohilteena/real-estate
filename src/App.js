@@ -1,24 +1,61 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+
+import Header from "./components/Header";
+import Filters from "./components/Filters";
+import PropertyList from "./components/PropertyList";
+import Pagination from "./components/Pagination";
+import ContactModal from "./components/ContactModal";
+
+import { PropertyProvider } from "./context/PropertyContext";
+
+import "./App.css";
 
 function App() {
+  const [showContact, setShowContact] = useState(false);
+  const [selectedProperty, setSelectedProperty] =
+    useState(null);
+
+  const openContactForm = (property) => {
+    setSelectedProperty(property);
+    setShowContact(true);
+  };
+
+  const closeContactForm = () => {
+    setShowContact(false);
+    setSelectedProperty(null);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <PropertyProvider>
+
+      <Header onContact={() => openContactForm(null)} />
+
+      <main className="container py-5">
+
+        <div className="page-heading">
+
+          <h2>Discover the Best Properties</h2>
+
+        </div>
+
+        <Filters />
+
+        <PropertyList
+          onContact={openContactForm}
+        />
+
+        <Pagination />
+
+      </main>
+
+      {showContact && (
+        <ContactModal
+          property={selectedProperty}
+          onClose={closeContactForm}
+        />
+      )}
+
+    </PropertyProvider>
   );
 }
 
