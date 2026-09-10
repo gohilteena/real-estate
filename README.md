@@ -25,27 +25,6 @@ The application displays property data from a JSON file and provides filtering, 
 - JSON
 - react-phone-input-2
 
-## Project Structure
-
-real-estate/
-├── public/
-├── src/
-│   ├── components/
-│   │   ├── Header.js
-│   │   ├── Filters.js
-│   │   ├── PropertyCard.js
-│   │   ├── PropertyList.js
-│   │   ├── Pagination.js
-│   │   └── ContactModal.js
-│   │
-│   ├── context/
-│   │   └── PropertyContext.js
-│   │
-│   ├── data/
-│   │   └── property-list-data.json
-│   │
-│   ├── App.js
-│   ├── App.css
 │   └── index.js
 │
 ├── package.json
