@@ -24,8 +24,3 @@ The application displays property data from a JSON file and provides filtering, 
 - Context API
 - JSON
 - react-phone-input-2
-
-│   └── index.js
-│
-├── package.json
-└── README.md
